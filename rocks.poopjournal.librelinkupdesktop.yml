@@ -1,9 +1,9 @@
 app-id: rocks.poopjournal.librelinkupdesktop
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
-base-version: '23.08'
+base-version: '25.08'
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node20
 command: run.sh
@@ -28,17 +28,20 @@ modules:
     build-commands:
       - npm install --legacy-peer-deps --offline
       - ./flatpak-node/electron-builder-arch-args.sh
-      - npx ts-node ./.erb/scripts/clean.js dist && npm run build && npx electron-builder --linux --dir $ELECTRON_BUILDER_ARCH_ARGS
+      - npx ts-node ./.erb/scripts/clean.js dist && npm run build && npx 
+        electron-builder --linux --dir $ELECTRON_BUILDER_ARCH_ARGS
       - cp -a release/build/linux*unpacked /app/main
       - install -Dm755 -t /app/bin/ ./run.sh
-      - install -Dm644 assets/logo.svg /app/share/icons/hicolor/scalable/apps/rocks.poopjournal.librelinkupdesktop.svg
-      - install -Dm644 flathub/rocks.poopjournal.librelinkupdesktop.desktop /app/share/applications/rocks.poopjournal.librelinkupdesktop.desktop
-      - install -Dm444 flathub/rocks.poopjournal.librelinkupdesktop.metainfo.xml /app/share/metainfo/rocks.poopjournal.librelinkupdesktop.metainfo.xml
+      - install -Dm644 assets/logo.svg 
+        /app/share/icons/hicolor/scalable/apps/rocks.poopjournal.librelinkupdesktop.svg
+      - install -Dm644 flathub/rocks.poopjournal.librelinkupdesktop.desktop 
+        /app/share/applications/rocks.poopjournal.librelinkupdesktop.desktop
+      - install -Dm444 flathub/rocks.poopjournal.librelinkupdesktop.metainfo.xml
+        /app/share/metainfo/rocks.poopjournal.librelinkupdesktop.metainfo.xml
     sources:
       - type: git
-        url: https://github.com/Crazy-Marvin/LibreLinkUpDesktop.git
-        tag: v0.1.13
-        commit: e7e51178e018d06932ac773d8b28d3ee44ab1ef4
+        url: https://github.com/deviitorinc/LibreLinkUpDesktop.git
+        commit: 6c897430881f614f4ae405c077345e7f4a5e6b57
       - generated-sources.json
       - type: script
         dest-filename: run.sh
