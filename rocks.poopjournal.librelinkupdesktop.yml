@@ -28,7 +28,7 @@ modules:
     build-commands:
       - npm install --legacy-peer-deps --offline
       - ./flatpak-node/electron-builder-arch-args.sh
-      - npx ts-node ./.erb/scripts/clean.js dist && npm run build && npx 
+      - npx tsx ./.erb/scripts/clean.js dist && npm run build && npx 
         electron-builder --linux --dir $ELECTRON_BUILDER_ARCH_ARGS
       - cp -a release/build/linux*unpacked /app/main
       - install -Dm755 -t /app/bin/ ./run.sh
@@ -40,8 +40,8 @@ modules:
         /app/share/metainfo/rocks.poopjournal.librelinkupdesktop.metainfo.xml
     sources:
       - type: git
-        url: https://github.com/deviitorinc/LibreLinkUpDesktop.git
-        commit: c53d5b543e591ca0525a1b03f78526add8fcd8be
+        url: https://github.com/fperera123/LibreLinkUpDesktop.git
+        commit: 4f0de02052cbfbe87a1de9a56b02a5507f9acad9
       - generated-sources.json
       - type: script
         dest-filename: run.sh
